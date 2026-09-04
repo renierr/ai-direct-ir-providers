@@ -7,6 +7,15 @@ WebAssembly provider packages for AI-Direct IR applications. It is a curated
 compatibility layer, not a replacement package registry and not a place to
 reimplement mature libraries in WAT.
 
+## Repository Role
+
+This is the reusable dependency layer between upstream ecosystems and
+AI-authored applications. `ai-direct-ir` owns generic runtime/composition work;
+this repository owns provider contracts, artifacts, provenance, licenses, and
+tests; `ai-direct-ir-example-mail` is an integration-driving consumer. When an
+example exposes a general need, coordinate the change across the relevant
+repositories and let the example break during the builder-phase redesign.
+
 ## Rules
 
 - Never install, upgrade, or remove software without explicit user consent.
@@ -26,6 +35,13 @@ reimplement mature libraries in WAT.
   when upstream licensing, availability, or reproducibility makes it necessary.
 - Do not add an application-specific host API. A provider must be usable by any
   compatible app without changing `host-rs`.
+- Treat companion example applications as integration drivers. When one exposes
+  a generic provider or Component Model need, evolve this catalog and the
+  harness with it; the example may break during the builder-phase redesign.
+- Before selecting an upstream implementation for SQLite, a database, or any
+  other consequential provider, present the user with the candidate projects,
+  licenses, WASM/component build path, maintenance/security tradeoffs, and a
+  recommendation. Do not choose or vendor one without explicit approval.
 - Verify claims by execution: validate WIT, validate component/artifact,
   exercise conformance tests, and record target/runtime limitations.
 

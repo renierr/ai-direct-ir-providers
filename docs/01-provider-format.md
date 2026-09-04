@@ -6,6 +6,18 @@ generic mirror of the source ecosystem. The format is experimental until the
 Component Model path is proven; change it directly rather than adding migration
 support for the template.
 
+Companion example applications drive this format. A missing general capability
+may require coordinated changes in the provider catalog and `ai-direct-ir`
+harness; examples may break while that experimental design is corrected.
+
+## Upstream Selection
+
+Do not select or vendor a consequential upstream implementation, including a
+SQLite/database engine, without explicit user approval. First present viable
+candidates with license, version/source provenance, WASM or Component Model
+build path, maintenance/security posture, artifact size, platform limits, and a
+recommendation. Record the approved selection in `provenance.toml`.
+
 ## Required Files
 
 ```text

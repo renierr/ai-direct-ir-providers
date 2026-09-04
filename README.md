@@ -15,6 +15,18 @@ are deliberately replaceable while the companion harness adopts Component Model
 composition. Do not add migration or compatibility machinery until a provider
 has real consumers and an explicit release commitment.
 
+## Three Repositories
+
+| Repository | What it is for | What we do there |
+|---|---|---|
+| `ai-direct-ir` | Generic platform | Build the harness that composes, validates, runs, and packages applications. |
+| `ai-direct-ir-providers` | This catalog | Turn selected upstream libraries into reusable, auditable WASM/WIT provider packages. |
+| `ai-direct-ir-example-mail` | Integration-driving app | Builds a real WAT mail client and exposes concrete provider needs. |
+
+When the mail app needs SQLite, SMTP, storage, or terminal functionality, this
+repository provides the reusable adapter and contract. Do not add the library
+to the harness or turn the catalog into a copy of a general package registry.
+
 ```text
 upstream library
   -> reproducible provider build + small adapter
