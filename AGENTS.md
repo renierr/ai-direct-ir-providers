@@ -19,6 +19,9 @@ repositories and let the example break during the builder-phase redesign.
 ## Rules
 
 - Never install, upgrade, or remove software without explicit user consent.
+- **Never commit or push without an explicit request.** Finishing a unit of
+  work is not a request. Leave changes in the working tree, report what
+  changed, and let the user decide when it lands.
 - Prefer upstream libraries and official source releases; record exact version,
   URL, source SHA-256, build command, tool versions, and every local patch in
   `provenance.toml`.
