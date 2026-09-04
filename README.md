@@ -34,9 +34,10 @@ to the harness or turn the catalog into a copy of a general package registry.
 An application vendors a reviewed provider package and composes its released
 component artifact through `host-rs`. It does not need Rust, Cargo, an upstream
 library checkout, or a provider build toolchain. A Core WAT application needs
-`host-rs` and WABT's `wat2wasm`; a component project that composes local
-providers additionally needs `wasm-tools 1.257.1` on its build machine. A
-prebuilt composed component needs only `host-rs` to check, run, and distribute.
+only `host-rs`, which embeds WAT assembly and validation. A component project
+that composes local providers additionally needs `wasm-tools 1.257.1` on its
+build machine. A prebuilt composed component needs only `host-rs` to check,
+run, and distribute.
 
 ### Develop A Provider
 
