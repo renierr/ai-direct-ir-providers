@@ -16,6 +16,9 @@ vendor/
 _upstream/
 .cache/
 
+# Local credentials and configuration.
+.env
+
 # Editor / OS noise.
 .DS_Store
 *~

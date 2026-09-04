@@ -27,6 +27,40 @@ When the mail app needs SQLite, SMTP, storage, or terminal functionality, this
 repository provides the reusable adapter and contract. Do not add the library
 to the harness or turn the catalog into a copy of a general package registry.
 
+## Environment
+
+### Consume A Released Provider
+
+An application vendors a reviewed provider package and composes its released
+component artifact through `host-rs`. It does not need Rust, Cargo, an upstream
+library checkout, or a provider build toolchain. A Core WAT application needs
+`host-rs` and WABT's `wat2wasm`; a component project that composes local
+providers additionally needs `wasm-tools 1.257.1` on its build machine. A
+prebuilt composed component needs only `host-rs` to check, run, and distribute.
+
+### Develop A Provider
+
+Provider development needs the exact upstream compiler/runtime toolchain named
+in that provider's `provenance.toml`, plus Git and `wasm-tools 1.257.1`. Do not
+assume one universal language toolchain: an adapter may require Rust/Cargo, C,
+or another upstream-supported build path. Record every required version and
+command in `provenance.toml` before releasing an artifact.
+
+Use `wasm-tools` only for the Component Model contract and artifact checks:
+
+| Command | Provider use |
+|---|---|
+| `wasm-tools validate` | Validate the released Core WASM or Component binary. |
+| `wasm-tools component wit` | Parse and validate the public WIT package. |
+| `wasm-tools component targets` | Verify that the artifact conforms to its declared WIT world. |
+| `wasm-tools compose` | Compose a consumer root and explicit provider components in the harness build path; it is not required to build every provider artifact. |
+
+`wasm-tools` is the Apache-2.0 Bytecode Alliance CLI. Apache-2.0 is compatible
+with this repository's AGPL-3.0-or-later licensing, subject to retaining its
+notices. We do not bundle its platform-specific executable in a provider
+package or application distribution. It is a build-time tool; released provider
+packages contain their component artifact, checksums, provenance, and notices.
+
 ```text
 upstream library
   -> reproducible provider build + small adapter
