@@ -7,8 +7,13 @@ libraries practical for applications authored directly as WebAssembly.
 
 This is not a replacement for crates.io, npm, PyPI, Maven, vcpkg, or upstream
 projects. Those remain the sources of libraries. A provider package adapts a
-specific upstream release into a stable, AI-friendly WebAssembly interface and
-records how to reproduce and audit the result.
+specific upstream release into an AI-friendly WebAssembly interface and records
+how to reproduce and audit the result.
+
+This is a builder-phase catalog. Its package layout, metadata, and WIT worlds
+are deliberately replaceable while the companion harness adopts Component Model
+composition. Do not add migration or compatibility machinery until a provider
+has real consumers and an explicit release commitment.
 
 ```text
 upstream library

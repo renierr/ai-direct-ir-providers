@@ -15,8 +15,9 @@ reimplement mature libraries in WAT.
   `provenance.toml`.
 - Every provider needs a small public WIT interface. Do not expose a large raw
   C ABI when an application-oriented interface can be defined.
-- Keep WIT APIs additive and versioned. Run `wasm-tools component semver-check`
-  before publishing an evolved WIT world when the relevant artifacts exist.
+- This is builder phase: redesign package metadata and WIT worlds directly when
+  needed. Do not add compatibility or migration machinery until a provider has
+  real consumers and an explicit release commitment.
 - Keep generated build output ignored. A release artifact is committed only
   when `provider.toml`, `checksums.txt`, provenance, licenses, and executable
   tests identify and verify it.

@@ -1,8 +1,10 @@
 # Provider Format
 
 A provider package is a pinned adaptation of an upstream library for
-AI-Direct IR applications. It supplies a stable application-facing interface,
-not a generic mirror of the source ecosystem.
+AI-Direct IR applications. It supplies an application-facing interface, not a
+generic mirror of the source ecosystem. The format is experimental until the
+Component Model path is proven; change it directly rather than adding migration
+support for the template.
 
 ## Required Files
 
