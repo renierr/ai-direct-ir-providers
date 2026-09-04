@@ -1,0 +1,6 @@
+# Reviewed catalog index. Provider packages remain the source of truth.
+# Add an entry only after the package passes the AGENTS.md completion gate.
+
+[registry]
+format = 1
+name = "AI-Direct IR Providers"

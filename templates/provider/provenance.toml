@@ -1,0 +1,13 @@
+[upstream]
+name = "__UPSTREAM_NAME__"
+version = "__UPSTREAM_VERSION__"
+source_url = "__IMMUTABLE_SOURCE_URL__"
+sha256 = "__UPSTREAM_SOURCE_SHA256__"
+
+[build]
+toolchain = "__TOOLCHAIN_AND_VERSION__"
+command = "__REPRODUCIBLE_BUILD_COMMAND__"
+target = "wasm32-wasi"
+
+# List every patch in application order with its reason before releasing.
+patches = []

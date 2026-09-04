@@ -1,0 +1,21 @@
+# Generated WASM/build output. Release artifacts are deliberately force-added
+# only after they are named, hashed, licensed, and tested in a provider package.
+*.wasm
+!providers/**/artifacts/**/*.wasm
+target/
+build/
+dist/
+vendor/
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+
+# Downloaded upstream source and local tool caches.
+_upstream/
+.cache/
+
+# Editor / OS noise.
+.DS_Store
+*~

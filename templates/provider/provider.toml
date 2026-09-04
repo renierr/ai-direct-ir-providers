@@ -1,0 +1,17 @@
+[package]
+name = "ai-direct:__NAME__"
+version = "0.1.0"
+description = "__DESCRIPTION__"
+license = "__LICENSE_EXPRESSION__"
+wit = "wit/__NAME__.wit"
+
+# Add one entry per released artifact. Paths are package-relative.
+[[artifacts]]
+kind = "component" # or "core-wasm"
+target = "wasm32-wasi"
+path = "artifacts/wasm32-wasi/__NAME__.component.wasm"
+sha256 = "__SHA256__"
+
+[requirements]
+# List only interfaces/capabilities actually required by this provider.
+wasi = []

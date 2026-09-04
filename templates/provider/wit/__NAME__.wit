@@ -1,0 +1,11 @@
+// Rename this package, interface, and world with WIT-compatible kebab-case.
+package ai-direct:example@0.1.0;
+
+/// Replace this fixture with the provider's narrow, application-facing API.
+interface example {
+  ping: func(input: string) -> string;
+}
+
+world example-provider {
+  export example;
+}
