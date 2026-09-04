@@ -1,0 +1,10 @@
+AI-Direct IR Providers
+Copyright 2026 the AI-Direct IR authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+Provider packages distribute artifacts derived from upstream projects. Those
+artifacts remain under their own licenses. Every package records its upstream
+licenses and notices in `providers/<name>/licenses/` and its exact upstream
+source in `providers/<name>/provenance.toml`; those terms govern the
+corresponding artifact or source material.

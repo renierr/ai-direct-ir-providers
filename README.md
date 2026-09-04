@@ -31,13 +31,13 @@ to the harness or turn the catalog into a copy of a general package registry.
 
 ### Consume A Released Provider
 
-An application vendors a reviewed provider package and composes its released
+An application vendors a reviewed provider package and consumes its released
 component artifact through `host-rs`. It does not need Rust, Cargo, an upstream
 library checkout, or a provider build toolchain. A Core WAT application needs
 only `host-rs`, which embeds WAT assembly and validation. A component project
-that composes local providers additionally needs `wasm-tools 1.257.1` on its
-build machine. A prebuilt composed component needs only `host-rs` to check,
-run, and distribute.
+that composes local providers may additionally need a composition tool on its
+build machine; see the open decision below. A prebuilt component needs only
+`host-rs` to check, run, and distribute.
 
 ### Develop A Provider
 
@@ -54,11 +54,14 @@ Use `wasm-tools` only for the Component Model contract and artifact checks:
 | `wasm-tools validate` | Validate the released Core WASM or Component binary. |
 | `wasm-tools component wit` | Parse and validate the public WIT package. |
 | `wasm-tools component targets` | Verify that the artifact conforms to its declared WIT world. |
-| `wasm-tools compose` | Compose a consumer root and explicit provider components in the harness build path; it is not required to build every provider artifact. |
 
-`wasm-tools` is the Apache-2.0 Bytecode Alliance CLI. Apache-2.0 is compatible
-with this repository's AGPL-3.0-or-later licensing, subject to retaining its
-notices. We do not bundle its platform-specific executable in a provider
+Composition of a consumer root with prebuilt provider components is an open
+decision in `ai-direct-ir`: `wasm-tools compose` is deprecated upstream, and the
+component text format cannot embed a prebuilt `.wasm`. A provider package is not
+blocked by it — publish the artifact, its WIT world, and its conformance test.
+
+`wasm-tools` is the Apache-2.0 Bytecode Alliance CLI, the same license this
+repository uses, subject to retaining its notices. We do not bundle its platform-specific executable in a provider
 package or application distribution. It is a build-time tool; released provider
 packages contain their component artifact, checksums, provenance, and notices.
 
@@ -141,6 +144,13 @@ the first planned stateful provider after WIT/component composition is proven.
 
 ## License
 
-Repository-authored material is licensed under AGPL-3.0-or-later. Provider
-artifacts retain the licenses of their upstream dependencies; each package must
-include complete notices in `licenses/`.
+Repository-authored material is licensed under Apache-2.0 (`LICENSE`,
+`NOTICE`). The catalog is deliberately permissive: a provider is vendored into
+a consuming application, so a copyleft catalog would set the license of every
+application that adopts one. The `ai-direct-ir` harness stays AGPL-3.0-or-later;
+it is a host that an application runs under, not code an application links in.
+
+Provider artifacts retain the licenses of their upstream dependencies. Each
+package must carry complete notices in `providers/<name>/licenses/`, and an
+upstream license incompatible with Apache-2.0 redistribution is grounds to
+reject the candidate.

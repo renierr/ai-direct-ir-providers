@@ -23,7 +23,13 @@ repositories and let the example break during the builder-phase redesign.
   URL, source SHA-256, build command, tool versions, and every local patch in
   `provenance.toml`.
 - Every provider needs a small public WIT interface. Do not expose a large raw
-  C ABI when an application-oriented interface can be defined.
+  C ABI when an application-oriented interface can be defined. A WIT directory
+  is one package: give each contract its own `wit/` directory or
+  `wasm-tools component wit` will reject the set.
+- This repository is Apache-2.0 (`LICENSE`, `NOTICE`) while the harness and the
+  example stay AGPL-3.0-or-later. Providers are vendored into consuming
+  applications, so the catalog must not decide their license. Reject an upstream
+  whose license is incompatible with Apache-2.0 redistribution.
 - This is builder phase: redesign package metadata and WIT worlds directly when
   needed. Do not add compatibility or migration machinery until a provider has
   real consumers and an explicit release commitment.
