@@ -17,6 +17,6 @@ wasm-tools component embed wit "$CORE" -o adapter/embedded.wasm \
 wasm-tools component new adapter/embedded.wasm -o "$OUT"
 wasm-tools validate --features all "$OUT"
 
-sha256sum "$OUT" | sed "s| .*| $(basename "$OUT")|" > checksums.txt
+sha256sum "$OUT" > checksums.txt
 printf 'built %s\n' "$OUT"
 sha256sum "$OUT"
