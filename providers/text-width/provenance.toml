@@ -1,0 +1,22 @@
+[upstream]
+name = "unicode-width (unicode-rs)"
+version = "0.2.2"
+source_url = "https://static.crates.io/crates/unicode-width/unicode-width-0.2.2.crate"
+sha256 = "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254"
+
+[build]
+toolchain = "rustc 1.98.0, cargo 1.98.0, wasm-tools 1.257.1"
+command = "./build.sh"
+target = "wasm32-wasip1"
+
+# No upstream patches. The package adds an adapter (adapter/src/lib.rs) that
+# exports the canonical ABI shape of the WIT world, strips ANSI CSI sequences,
+# and calls unicode-width; upstream source is used unmodified from crates.io.
+patches = []
+
+[verification]
+# A table of known widths -- ASCII, wide CJK, combining marks, emoji, and an
+# ANSI-styled label -- cross-checked against Python's unicodedata where that
+# module can answer. See tests/run.sh.
+conformance = "tests/run.sh"
+reference = "UAX #11 east-asian width via Python unicodedata"

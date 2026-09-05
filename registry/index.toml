@@ -12,3 +12,11 @@ path = "providers/sha256"
 upstream = "sha2 0.10.9 (RustCrypto)"
 kind = "component"
 wasi = []
+
+[[provider]]
+name = "ai-direct:text-width"
+version = "0.1.0"
+path = "providers/text-width"
+upstream = "unicode-width 0.2.2 (unicode-rs)"
+kind = "component"
+wasi = []

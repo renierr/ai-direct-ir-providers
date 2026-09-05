@@ -1,0 +1,10 @@
+# Conformance consumer for the text-width provider.
+mode = "command"
+
+[[providers]]
+path = "../artifacts/wasm32-wasi/text-width.component.wasm"
+
+[app]
+source = "consumer.wat"
+path = "consumer.wasm"
+run = "wasi:cli/run"
