@@ -32,12 +32,12 @@ to the harness or turn the catalog into a copy of a general package registry.
 ### Consume A Released Provider
 
 An application vendors a reviewed provider package and consumes its released
-component artifact through `host-rs`. It does not need Rust, Cargo, an upstream
+component artifact through `air`. It does not need Rust, Cargo, an upstream
 library checkout, or a provider build toolchain. A Core WAT application needs
-only `host-rs`, which embeds WAT assembly and validation. A component project
+only `air`, which embeds WAT assembly and validation. A component project
 that composes local providers may additionally need a composition tool on its
 build machine; see the open decision below. A prebuilt component needs only
-`host-rs` to check, run, and distribute.
+`air` to check, run, and distribute.
 
 ### Develop A Provider
 

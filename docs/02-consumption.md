@@ -5,7 +5,7 @@ bundled by the application distribution. They are never fetched at runtime.
 
 ## Current Core WASM Path
 
-The current `host-rs` runtime composes Core WASM modules through `host.toml`:
+The current `air` runtime composes Core WASM modules through `host.toml`:
 
 ```toml
 [[libs]]
@@ -13,7 +13,7 @@ path = "vendor/example/artifacts/core/example.wasm"
 as = "example"
 ```
 
-The application imports `example.*`; `host-rs check` instantiates the complete
+The application imports `example.*`; `air check` instantiates the complete
 declared graph and proves imports, exports, and WASM types resolve.
 
 Use `[[bridges]]` only when a provider owns its memory and matches the current

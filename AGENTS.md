@@ -43,7 +43,7 @@ repositories and let the example break during the builder-phase redesign.
   source metadata and reproducible acquisition/build instructions. Vendor only
   when upstream licensing, availability, or reproducibility makes it necessary.
 - Do not add an application-specific host API. A provider must be usable by any
-  compatible app without changing `host-rs`.
+  compatible app without changing `air`.
 - Treat companion example applications as integration drivers. When one exposes
   a generic provider or Component Model need, evolve this catalog and the
   harness with it; the example may break during the builder-phase redesign.
