@@ -1,0 +1,21 @@
+[upstream]
+name = "sha2 (RustCrypto/hashes)"
+version = "0.10.9"
+source_url = "https://static.crates.io/crates/sha2/sha2-0.10.9.crate"
+sha256 = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+
+[build]
+toolchain = "rustc 1.98.0, cargo 1.98.0, wasm-tools 1.257.1"
+command = "./build.sh"
+target = "wasm32-wasip1"
+
+# No upstream patches. The package adds an adapter (adapter/src/lib.rs) that
+# exports the canonical ABI shape of the WIT world and calls sha2; upstream
+# source is used unmodified from crates.io.
+patches = []
+
+[verification]
+# Compared against coreutils sha256sum across the padding boundaries plus the
+# FIPS 180-4 "abc" vector. See tests/run.sh.
+conformance = "tests/run.sh"
+reference = "coreutils sha256sum, FIPS 180-4"

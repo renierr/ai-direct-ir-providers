@@ -22,3 +22,8 @@ _upstream/
 # Editor / OS noise.
 .DS_Store
 *~
+
+# Provider build output. A released artifact is force-added with its checksum.
+providers/*/adapter/target/
+providers/*/adapter/embedded.wasm
+providers/*/tests/*.wasm

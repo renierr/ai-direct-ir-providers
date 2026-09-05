@@ -4,3 +4,11 @@
 [registry]
 format = 1
 name = "AI-Direct IR Providers"
+
+[[provider]]
+name = "ai-direct:sha256"
+version = "0.1.0"
+path = "providers/sha256"
+upstream = "sha2 0.10.9 (RustCrypto)"
+kind = "component"
+wasi = []

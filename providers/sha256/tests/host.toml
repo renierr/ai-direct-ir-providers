@@ -1,0 +1,10 @@
+# Conformance consumer for the sha256 provider.
+mode = "command"
+
+[[providers]]
+path = "../artifacts/wasm32-wasi/sha256.component.wasm"
+
+[app]
+source = "consumer.wat"
+path = "consumer.wasm"
+run = "wasi:cli/run"
