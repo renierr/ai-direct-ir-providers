@@ -1,0 +1,43 @@
+package ai-direct:sqlite@0.1.0;
+
+// SQLite through integer handles, not resources.
+//
+// Resource handles cannot cross the provider boundary (each instance owns
+// its own table), so a connection is a `u32` the provider maps to a live
+// `rusqlite::Connection` for the duration of one run. All other values
+// are plain data: strings, ints, floats, and byte lists.
+interface store {
+  variant value {
+    int-val(s64),
+    real-val(f64),
+    text-val(string),
+    blob-val(list<u8>),
+    null-val,
+  }
+
+  record row {
+    values: list<value>,
+  }
+
+  record result-set {
+    columns: list<string>,
+    rows: list<row>,
+  }
+
+  // Open (creating if needed) the database at `path`. The path is
+  // guest-visible: it must sit under a directory the manifest grants,
+  // with `write = true` for any database that changes.
+  open: func(path: string) -> result<u32, string>;
+
+  // Run one statement. `?` placeholders bind positionally from `params`.
+  // Queries return columns and rows; other statements return no rows.
+  // One call = one statement; there is no multi-statement or streaming
+  // cursor yet, which is a contract change when an app needs it.
+  exec: func(handle: u32, sql: string, params: list<value>) -> result<result-set, string>;
+
+  close: func(handle: u32) -> result<_, string>;
+}
+
+world sqlite-provider {
+  export store;
+}

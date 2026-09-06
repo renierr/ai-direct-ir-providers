@@ -28,3 +28,11 @@ path = "providers/base64"
 upstream = "RFC 4648"
 kind = "component"
 wasi = []
+
+[[provider]]
+name = "ai-direct:sqlite"
+version = "0.1.0"
+path = "providers/sqlite"
+upstream = "rusqlite 0.32.1 + libsqlite3-sys 0.30.1 (SQLite 3.46.0)"
+kind = "component"
+wasi = ["filesystem", "clocks", "random", "cli"]

@@ -27,3 +27,4 @@ _upstream/
 providers/*/adapter/target/
 providers/*/adapter/embedded.wasm
 providers/*/tests/*.wasm
+providers/*/tests/data/

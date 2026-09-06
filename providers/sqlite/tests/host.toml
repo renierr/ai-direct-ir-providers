@@ -1,0 +1,16 @@
+# Conformance consumer for the sqlite provider.
+mode = "command"
+
+[[providers]]
+path = "../artifacts/wasm32-wasi/sqlite.component.wasm"
+
+# The database file lives here, guest-visible as `data/test.db`.
+# The provider shares this process's preopens, so it sees the same grant.
+[[dirs]]
+path = "data"
+write = true
+
+[app]
+source = "consumer.wat"
+path = "consumer.wasm"
+run = "wasi:cli/run"

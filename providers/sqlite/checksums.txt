@@ -1,0 +1,1 @@
+c1057f19b61d7a1c733b0bba867de975b984c02198454d858ebffbd71799f964  artifacts/wasm32-wasi/sqlite.component.wasm

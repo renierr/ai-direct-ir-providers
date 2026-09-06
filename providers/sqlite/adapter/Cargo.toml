@@ -1,0 +1,18 @@
+[package]
+name = "sqlite-provider"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# WASI filesystem is required (database files persist under granted
+# directories), so this is a `std` component for `wasm32-wasip2` — the
+# deliberate counterpart to the pure providers' `no_std` contract.
+rusqlite = { version = "0.32", features = ["bundled"] }
+wit-bindgen = "0.36"
+
+[profile.release]
+opt-level = "s"
+lto = true

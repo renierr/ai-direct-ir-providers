@@ -1,0 +1,32 @@
+[upstream]
+# Pinned via crates.io (immutable .crate archives with registry hashes),
+# resolved in `adapter/Cargo.lock`. `libsqlite3-sys/bundled` compiles the
+# SQLite amalgamation it vendors (SQLITE_VERSION 3.46.0 below).
+name = "rusqlite + libsqlite3-sys bundled (SQLite amalgamation)"
+version = "rusqlite 0.32.1, libsqlite3-sys 0.30.1, SQLite 3.46.0, wit-bindgen 0.36.0"
+source_url = "https://static.crates.io/crates/rusqlite/rusqlite-0.32.1.crate"
+sha256 = "7753b721174eb8ff87a9a0e799e2d7bc3749323e773db92e0984debb00019d6e"
+# libsqlite3-sys 0.30.1: 2e99fb7a497b1e3339bc746195567ed8d3e24945ecd636e3619d20b9de9e9149
+# wit-bindgen 0.36.0: 6a2b3e15cd6068f233926e7d8c7c588b2ec4fb7cc7bf3824115e7c7e2a8485a3
+
+[build]
+toolchain = "rustc 1.98.0, cargo 1.98.0, wasm-tools 1.257.1, wasi-sdk 34.0 (WASI sysroot + clang)"
+command = "./build.sh"
+target = "wasm32-wasip2"
+
+[build]
+toolchain = "rustc 1.98.0, cargo 1.98.0, wasm-tools 1.257.1, clang 22.1.8 (cc crate, WASI sysroot)"
+command = "./build.sh"
+target = "wasm32-wasip2"
+
+# No upstream patches. The package adds an adapter (adapter/src/lib.rs)
+# that exports the WIT world via wit-bindgen and maps it onto rusqlite;
+# upstream sources are used unmodified.
+patches = []
+
+[verification]
+# Round-trip through the component vs the native sqlite3 CLI (3.53.4):
+# create, insert, select with every value type, persistence across
+# reopen, read-only denial without a write grant. See tests/run.sh.
+conformance = "tests/run.sh"
+reference = "native sqlite3 CLI"

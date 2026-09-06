@@ -1,0 +1,18 @@
+[package]
+name = "ai-direct:sqlite"
+version = "0.1.0"
+description = "SQLite embedded database for AI-Direct IR applications, backed by the SQLite amalgamation through rusqlite."
+license = "Apache-2.0 AND (MIT OR Apache-2.0)"
+wit = "wit/sqlite.wit"
+
+[[artifacts]]
+kind = "component"
+target = "wasm32-wasi"
+path = "artifacts/wasm32-wasi/sqlite.component.wasm"
+sha256 = "c1057f19b61d7a1c733b0bba867de975b984c02198454d858ebffbd71799f964"
+
+# Verified with `wasm-tools component wit` on the released artifact: the
+# `std` runtime pulls the full `wasi:cli` command world plus clocks and
+# random alongside the filesystem SQLite actually needs.
+[requirements]
+wasi = ["filesystem", "clocks", "random", "cli"]
