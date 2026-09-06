@@ -1,0 +1,10 @@
+package ai-direct:base64@0.1.0;
+
+interface codec {
+  /// Encode UTF-8 text as padded RFC 4648 Base64.
+  encode: func(text: string) -> string;
+}
+
+world base64-provider {
+  export codec;
+}

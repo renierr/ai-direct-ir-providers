@@ -1,0 +1,15 @@
+[upstream]
+name = "RFC 4648"
+version = "2006"
+source_url = "https://www.rfc-editor.org/rfc/rfc4648"
+sha256 = ""
+
+[build]
+toolchain = "wasm-tools 1.257.1"
+command = "./build.sh"
+target = "component"
+patches = []
+
+[verification]
+conformance = "tests/run.sh"
+reference = "RFC 4648 section 10 test vectors"

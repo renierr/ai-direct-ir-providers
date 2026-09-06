@@ -1,0 +1,1 @@
+0920772f4b4ac91949ef6be9f548ec6a17fc3a8fad295c6422bd81befc8f6356  artifacts/wasm32-wasi/base64.component.wasm

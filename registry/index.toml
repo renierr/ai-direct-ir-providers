@@ -20,3 +20,11 @@ path = "providers/text-width"
 upstream = "unicode-width 0.2.2 (unicode-rs)"
 kind = "component"
 wasi = []
+
+[[provider]]
+name = "ai-direct:base64"
+version = "0.1.0"
+path = "providers/base64"
+upstream = "RFC 4648"
+kind = "component"
+wasi = []

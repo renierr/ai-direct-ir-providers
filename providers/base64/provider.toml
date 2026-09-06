@@ -1,0 +1,15 @@
+[package]
+name = "ai-direct:base64"
+version = "0.1.0"
+description = "Padded RFC 4648 Base64 encoding for UTF-8 text."
+license = "Apache-2.0"
+wit = "wit/base64.wit"
+
+[[artifacts]]
+kind = "component"
+target = "wasm32-wasi"
+path = "artifacts/wasm32-wasi/base64.component.wasm"
+sha256 = "0920772f4b4ac91949ef6be9f548ec6a17fc3a8fad295c6422bd81befc8f6356"
+
+[requirements]
+wasi = []
